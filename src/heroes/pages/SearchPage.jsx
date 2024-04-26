@@ -19,7 +19,7 @@ export const SearchPage = () => {
 
   const onSearchSubmit = (e) => {
     e.preventDefault()
-
+    
     navigate(`?q=${searchText}`)
   }
 
@@ -32,7 +32,7 @@ export const SearchPage = () => {
         <div className="col-5">
           <h4>Searching</h4>
           <hr/>
-          <form onSubmit={onSearchSubmit}>
+          <form onSubmit={onSearchSubmit} aria-label="form">
             <input type="text" name="searchText" id="" placeholder="Searh a hero" className="form-control" autoComplete="off" value={searchText} onChange={onInputChange}/>
 
             <button className="btn btn-outline-primary mt-1">Search</button>
