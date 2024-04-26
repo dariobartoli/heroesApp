@@ -1,11 +1,16 @@
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth';
 
 
 export const NavBar = () => {
 
+    const { user, logout } = useContext( AuthContext )
+
     const navigate = useNavigate()
 
     const onLogout = () => {
+        logout()
         navigate('/login', {
             replace: true //para reemplazar el historial de busqueda, es para no poder volver atras, una vez que te deslogeaste
         });
@@ -51,7 +56,7 @@ export const NavBar = () => {
                 <ul className="navbar-nav ml-auto">
 
                     <span className='nav-item nav-link text-primary'>
-                        Dario
+                        {user?.name}
                     </span>
                     <button className='nav-item nav-link btn' onClick={onLogout}>
                         Logout
